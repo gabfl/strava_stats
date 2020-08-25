@@ -12,22 +12,22 @@ Visit:
 http://www.strava.com/oauth/authorize?client_id=[YOUR CLIENT ID]&response_type=code&redirect_uri=[REDIRECT URL]&approval_prompt=force&scope=activity:read
 ```
 
-`redirect_uri` needs to be a callback URL where you can save payloads. You can use [https://webhook.link](https://webhook.link) for this purpose.
+`redirect_uri` needs to be a valid callback URL because Strava will use it to send a Json containing the user refresh token. You can use [https://webhook.link](https://webhook.link) for this purpose.
 
  - Obtain a user refresh token:
 
 ```bash
 curl -X POST https://www.strava.com/oauth/token \
--F client_id=[YOUR CLIENT ID] \
--F client_secret=[YOUR CLIENT SECRET] \
--F code=[STRAVA USER CODE] \
--F grant_type=authorization_code
+  -F client_id=[YOUR CLIENT ID] \
+  -F client_secret=[YOUR CLIENT SECRET] \
+  -F code=[STRAVA USER CODE] \
+  -F grant_type=authorization_code
 ```
 
 ## Usage
 
 ```bash
-# INstall dependencies
+# Install dependencies
 pip3 install -r requirements.txt
 
 # Export app & user secrets
