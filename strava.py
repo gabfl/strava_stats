@@ -52,13 +52,9 @@ def get_activities(client_id, client_secret, access_token):
 
     while True:
         r = requests.get('https://www.strava.com/api/v3/athlete/activities?after=%s&page=%d&per_page=50' % (get_epoch(), page),
-                         data={
-            'client_id': client_id,
-            'client_secret': client_secret,
-            'access_token': access_token
-        },
-            headers={
-            'accept': 'application/json'
+                         headers={
+            'accept': 'application/json',
+            'Authorization': f"Bearer {access_token}"
         })
 
         # Increment page
